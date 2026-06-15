@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40">
+  <text x="0" y="28" font-family="'Inter', sans-serif" font-weight="700" font-size="24" fill="#6366f1">
+    Shop<tspan fill="#1e293b">Sphere</tspan>
+  </text>
+  <circle cx="140" cy="20" r="6" fill="#10b981"/>
+</svg>
