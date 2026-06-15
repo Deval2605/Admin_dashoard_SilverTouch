@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | Silver Touch</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dark-mode.css" rel="stylesheet">
+  <style>
+    .settings-nav .nav-link {
+      color: var(--text-secondary);
+      border-radius: 8px;
+      padding: 10px 16px;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    .settings-nav .nav-link:hover, .settings-nav .nav-link.active {
+      background-color: var(--primary-light);
+      color: var(--primary);
+    }
+    body.dark-mode .settings-nav .nav-link:hover, body.dark-mode .settings-nav .nav-link.active {
+      background-color: rgba(99, 102, 241, 0.2);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sidebar-overlay d-none" id="sidebarOverlay"></div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-logo">
+        <i class="fas fa-server"></i> Silver Touch
+      </a>
+      <button id="sidebarClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sidebar-divider"></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-chart-bar"></i> Dashboard</a>
+      <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Client Registry</a>
+      <a href="reports.html" class="nav-link"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href="settings.html" class="nav-link active"><i class="fas fa-cog"></i> Settings</a>
+    </nav>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-footer">
+      <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <div class="main-content">
+    
+    <header class="topbar">
+      <div class="topbar-left">
+        <button id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="search-container d-none d-md-block">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search orders, users...">
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="dropdown">
+          <button class="icon-btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="far fa-bell"></i>
+            <span class="badge">3</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow p-0 notification-dropdown">
+            <li class="p-3 border-bottom fw-bold d-flex justify-content-between align-items-center">
+              Notifications
+              <span class="badge bg-primary rounded-pill">3 new</span>
+            </li>
+            <li class="p-3 border-bottom d-flex gap-3 text-wrap">
+              <div class="icon-circle-sm bg-accent-light"><i class="fas fa-check text-accent text-12"></i></div>
+              <div><div class="small fw-medium">Order #SS-4821 Delivered</div><div class="text-muted text-11">2 mins ago</div></div>
+            </li>
+            <li class="p-3 border-bottom d-flex gap-3">
+              <div class="icon-circle-sm bg-primary-light"><i class="fas fa-user-plus text-primary text-12"></i></div>
+              <div><div class="small fw-medium">New User Registration</div><div class="text-muted text-11">15 mins ago</div></div>
+            </li>
+            <li class="p-3 border-bottom d-flex gap-3">
+              <div class="icon-circle-sm bg-warning-light"><i class="fas fa-exclamation text-warning text-12"></i></div>
+              <div><div class="small fw-medium">Low Stock Alert</div><div class="text-muted text-11">1 hr ago</div></div>
+            </li>
+            <li class="p-2 text-center border-top">
+              <a class="small text-decoration-none" href="#">Mark all as read</a>
+            </li>
+          </ul>
+        </div>
+        <button class="icon-btn" id="darkModeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="topbar-divider"></div>
+        <div class="dropdown">
+          <button class="user-dropdown" data-bs-toggle="dropdown">
+            <div class="avatar">AD</div>
+            <i class="fas fa-chevron-down ms-1 dropdown-chevron"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2 text-muted"></i>My Profile</a></li>
+            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2 text-muted"></i>Account Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2 text-danger"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      
+      <div class="page-header">
+        <div>
+          <h4 class="mb-1">Settings</h4>
+          <p class="breadcrumb">Home <span class="mx-2">&gt;</span> Settings</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Settings Sidebar -->
+        <div class="col-lg-3 mb-4">
+          <div class="card p-3 sticky-top sticky-nav-88">
+            <nav class="nav flex-column settings-nav">
+              <a class="nav-link active" href="#store-info"><i class="fas fa-building me-2"></i> Corporate Info</a>
+              <a class="nav-link" href="#notifications"><i class="far fa-bell me-2"></i> Notification Preferences</a>
+              <a class="nav-link" href="#security"><i class="fas fa-shield-alt me-2"></i> Security</a>
+              <a class="nav-link text-danger" href="#danger-zone"><i class="fas fa-exclamation-triangle me-2"></i> Danger Zone</a>
+            </nav>
+          </div>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="col-lg-9">
+          
+          <!-- Store Information -->
+          <div id="store-info" class="card p-4 mb-4">
+            <h5 class="mb-4">Corporate Identity</h5>
+            <form id="storeForm">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-medium">Store Name</label>
+                  <input type="text" class="form-control" id="storeName" value="ShopSphere" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-medium">Admin Email</label>
+                  <input type="email" class="form-control" id="storeEmail" value="admin@silvertouch.com" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-medium">Head Office Phone</label>
+                  <input type="tel" class="form-control" id="storePhone">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-medium">Currency</label>
+                  <select class="form-select" id="storeCurrency">
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="GBP">GBP</option>
+                    <option value="INR">INR</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-muted small fw-medium">Timezone</label>
+                  <select class="form-select" id="storeTimezone">
+                    <option value="UTC">UTC</option>
+                    <option value="UTC+5:30">UTC+5:30</option>
+                    <option value="UTC-5">UTC-5</option>
+                    <option value="UTC+1">UTC+1</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-medium">Store Logo Upload</label>
+                  <input type="file" class="form-control" id="storeLogo">
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-medium">Store Description</label>
+                  <textarea class="form-control" id="storeDesc" rows="4"></textarea>
+                </div>
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary">Save Store Info</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Notification Preferences -->
+          <div id="notifications" class="card p-4 mb-4">
+            <h5 class="mb-4">Notification Preferences</h5>
+            
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+              <div>
+                <div class="fw-medium">Email Notifications for New Orders</div>
+                <div class="small text-muted mt-1">Receive an email every time a customer places a new order.</div>
+              </div>
+              <div class="form-check form-switch ps-0">
+                <input class="form-check-input ms-0 float-end" type="checkbox" checked>
+              </div>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+              <div>
+                <div class="fw-medium">SMS Alerts for Low Stock</div>
+                <div class="small text-muted mt-1">Get an SMS message when product inventory falls below 10 items.</div>
+              </div>
+              <div class="form-check form-switch ps-0">
+                <input class="form-check-input ms-0 float-end" type="checkbox">
+              </div>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+              <div>
+                <div class="fw-medium">Weekly Revenue Report via Email</div>
+                <div class="small text-muted mt-1">Summary of sales and platform performance sent every Monday.</div>
+              </div>
+              <div class="form-check form-switch ps-0">
+                <input class="form-check-input ms-0 float-end" type="checkbox" checked>
+              </div>
+            </div>
+            
+            <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+              <div>
+                <div class="fw-medium">Push Notifications for Abandoned Carts</div>
+                <div class="small text-muted mt-1">Send a push notification to your phone for high-value abandoned carts.</div>
+              </div>
+              <div class="form-check form-switch ps-0">
+                <input class="form-check-input ms-0 float-end" type="checkbox">
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <div class="fw-medium">Vendor Product Approval Alerts</div>
+                <div class="small text-muted mt-1">Notify me when vendors submit new products requiring approval.</div>
+              </div>
+              <div class="form-check form-switch ps-0">
+                <input class="form-check-input ms-0 float-end" type="checkbox" checked>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Security -->
+          <div id="security" class="card p-4 mb-4">
+            <h5 class="mb-4">Security</h5>
+            <form id="passwordForm">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-medium">Current Password</label>
+                  <input type="password" class="form-control" id="currentPassword" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-medium">New Password</label>
+                  <input type="password" class="form-control" id="newPassword" required>
+                  
+                  <div class="password-strength mt-2">
+                    <div class="strength-segments d-flex gap-1">
+                      <div class="segment" id="seg1"></div>
+                      <div class="segment" id="seg2"></div>
+                      <div class="segment" id="seg3"></div>
+                      <div class="segment" id="seg4"></div>
+                    </div>
+                    <small id="strengthLabel" class="text-muted mt-1 d-block">Enter a password</small>
+                  </div>
+
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-muted small fw-medium">Confirm New Password</label>
+                  <input type="password" class="form-control" id="confirmPassword" required>
+                </div>
+                <div class="col-12 mt-4">
+                  <button type="submit" class="btn btn-primary">Update Password</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Danger Zone -->
+          <div id="danger-zone" class="card p-4 danger-zone">
+            <h5 class="mb-2 card-title">Danger Zone</h5>
+            <p class="text-muted mb-4 small">These actions are permanent and cannot be undone.</p>
+            <div class="d-flex flex-wrap gap-3">
+              <button class="btn btn-outline-danger" id="exportDataBtn">Export All Data</button>
+              <button class="btn btn-danger" id="deleteAccountBtn">Delete Account</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="footer">
+      &copy; 2024 ShopSphere Admin. All rights reserved.
+    </footer>
+  </div>
+
+  <!-- Reusable Confirmation Modal -->
+  <div class="modal fade" id="confirmModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-semibold" id="confirmModalTitle">Confirm Action</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body" id="confirmModalBody">
+          Are you sure?
+        </div>
+        <div class="modal-footer border-0">
+          <button class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button class="btn btn-danger" id="confirmModalAction">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3 toast-wrapper"></div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <script src="js/main.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/settings.js"></script>
+
+</body>
+</html>
