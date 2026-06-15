@@ -1,3 +1,4 @@
+
 # Silver Touch Technologies Enterprise Dashboard
 
 A high-performance, responsive enterprise operations dashboard developed as a comprehensive frontend assessment. This application serves as a centralized management interface modeled specifically for Silver Touch Technologies Ltd, reflecting their B2B, e-governance, and IT consulting operations.
@@ -23,6 +24,11 @@ A heavy emphasis was placed on code quality and standard compliance. Inline CSS 
 3. **Reports (reports.html):** Four distinct, highly configurable enterprise monitoring charts.
 4. **Settings (settings.html):** Forms targeting Corporate Identity management and complex security configurations.
 5. **Authentication (login.html):** Standalone interface utilizing strict client-side validation thresholds prior to granting dashboard access.
+
+<img width="1876" height="908" alt="Screenshot 2026-06-15 223050" src="https://github.com/user-attachments/assets/5303d6d8-9de7-4cb6-ae97-e4a995b9a6ef" />
+<img width="1865" height="907" alt="Screenshot 2026-06-15 223115" src="https://github.com/user-attachments/assets/e8c9a09c-e33b-46a3-9374-f2a88a01e87c" />
+<img width="1875" height="908" alt="Screenshot 2026-06-15 223102" src="https://github.com/user-attachments/assets/14d69bdb-61a3-4104-abe6-342dacf81f3f" />
+<img width="1877" height="897" alt="Screenshot 2026-06-15 223127" src="https://github.com/user-attachments/assets/9bec3973-ee1b-4082-b6d2-d8e812f624b2" />
 
 ## How to Run Locally
 
