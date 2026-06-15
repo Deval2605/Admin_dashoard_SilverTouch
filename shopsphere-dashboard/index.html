@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Silver Touch</title>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Font Awesome 6 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  
+  <!-- Custom CSS (AFTER Bootstrap) -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dark-mode.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Sidebar Overlay for mobile -->
+  <div class="sidebar-overlay d-none" id="sidebarOverlay"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <a href="index.html" class="sidebar-logo">
+        <i class="fas fa-server"></i> Silver Touch
+      </a>
+      <button id="sidebarClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="sidebar-divider"></div>
+    <nav class="sidebar-nav">
+      <a href="index.html" class="nav-link"><i class="fas fa-chart-bar"></i> Dashboard</a>
+      <a href="users.html" class="nav-link"><i class="fas fa-users"></i> Client Registry</a>
+      <a href="reports.html" class="nav-link"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href="settings.html" class="nav-link"><i class="fas fa-cog"></i> Settings</a>
+    </nav>
+    <div class="sidebar-divider"></div>
+    <div class="sidebar-footer">
+      <a href="login.html" class="nav-link text-danger"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </div>
+  </aside>
+
+  <!-- Main Content wrapper -->
+  <div class="main-content">
+    
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <button id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="search-container d-none d-md-block">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search orders, users...">
+        </div>
+      </div>
+      <div class="topbar-right">
+        <div class="dropdown">
+          <button class="icon-btn" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="far fa-bell"></i>
+            <span class="badge">3</span>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow p-0 notification-dropdown">
+            <li class="p-3 border-bottom fw-bold d-flex justify-content-between align-items-center">
+              Notifications
+              <span class="badge bg-primary rounded-pill">3 new</span>
+            </li>
+            <li class="p-3 border-bottom d-flex gap-3 text-wrap">
+              <div class="icon-circle-sm bg-accent-light"><i class="fas fa-check text-accent text-12"></i></div>
+              <div><div class="small fw-medium">Order #SS-4821 Delivered</div><div class="text-muted text-11">2 mins ago</div></div>
+            </li>
+            <li class="p-3 border-bottom d-flex gap-3">
+              <div class="icon-circle-sm bg-primary-light"><i class="fas fa-user-plus text-primary text-12"></i></div>
+              <div><div class="small fw-medium">New User Registration</div><div class="text-muted text-11">15 mins ago</div></div>
+            </li>
+            <li class="p-3 border-bottom d-flex gap-3">
+              <div class="icon-circle-sm bg-warning-light"><i class="fas fa-exclamation text-warning text-12"></i></div>
+              <div><div class="small fw-medium">Low Stock Alert</div><div class="text-muted text-11">1 hr ago</div></div>
+            </li>
+            <li class="p-2 text-center border-top">
+              <a class="small text-decoration-none" href="#">Mark all as read</a>
+            </li>
+          </ul>
+        </div>
+        <button class="icon-btn" id="darkModeToggle">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="topbar-divider"></div>
+        <div class="dropdown">
+          <button class="user-dropdown" data-bs-toggle="dropdown">
+            <div class="avatar">AD</div>
+            <i class="fas fa-chevron-down ms-1 dropdown-chevron"></i>
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end shadow">
+            <li><a class="dropdown-item" href="#"><i class="fas fa-user-circle me-2 text-muted"></i>My Profile</a></li>
+            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog me-2 text-muted"></i>Account Settings</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="login.html"><i class="fas fa-sign-out-alt me-2 text-danger"></i>Sign Out</a></li>
+          </ul>
+        </div>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="page-content">
+      
+      <!-- Page Header -->
+      <div class="page-header">
+        <div>
+          <h4 class="mb-1">Dashboard</h4>
+          <p class="breadcrumb">Home <span class="mx-2">&gt;</span> Dashboard</p>
+        </div>
+      </div>
+
+      <!-- Section 1: Stats Cards -->
+      <div class="row">
+        <!-- Card 1 -->
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card p-3">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle bg-accent-light me-3">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <div>
+                <div class="text-muted small fw-medium text-uppercase">Total Revenue</div>
+                <div class="fs-4 fw-bold stat-value" data-val="₹90.22 Cr"><div class="spinner-border spinner-border-sm text-primary"></div></div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center text-success small fw-medium">
+              <i class="fas fa-arrow-up me-1"></i> +12.5% vs last month
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card p-3">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle bg-primary-light me-3">
+                <i class="fas fa-shopping-bag"></i>
+              </div>
+              <div>
+                <div class="text-muted small fw-medium text-uppercase">Active Projects</div>
+                <div class="fs-4 fw-bold stat-value" data-val="184"><div class="spinner-border spinner-border-sm text-primary"></div></div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center text-success small fw-medium">
+              <i class="fas fa-arrow-up me-1"></i> +8.2% vs last month
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card p-3">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle bg-warning-light me-3">
+                <i class="fas fa-users"></i>
+              </div>
+              <div>
+                <div class="text-muted small fw-medium text-uppercase">Active Clients</div>
+                <div class="fs-4 fw-bold stat-value" data-val="45"><div class="spinner-border spinner-border-sm text-primary"></div></div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center text-success small fw-medium">
+              <i class="fas fa-arrow-up me-1"></i> +3.1% vs last month
+            </div>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-12 col-sm-6 col-xl-3">
+          <div class="card p-3">
+            <div class="d-flex align-items-center mb-3">
+              <div class="icon-circle bg-danger-light me-3">
+                <i class="fas fa-truck"></i>
+              </div>
+              <div>
+                <div class="text-muted small fw-medium text-uppercase">Pending SLA Tickets</div>
+                <div class="fs-4 fw-bold stat-value" data-val="12"><div class="spinner-border spinner-border-sm text-primary"></div></div>
+              </div>
+            </div>
+            <div class="d-flex align-items-center text-danger small fw-medium">
+              <i class="fas fa-arrow-down me-1"></i> -2.4% vs last month
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Charts -->
+      <div class="row charts-row">
+        <!-- Chart 1 -->
+        <div class="col-lg-8">
+          <div class="card p-4 h-100">
+            <h6 class="mb-4">Weekly Revenue</h6>
+            <div class="chart-container-md">
+              <canvas id="revenueChart"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- Chart 2 -->
+        <div class="col-lg-4 mt-4 mt-lg-0">
+          <div class="card p-4 h-100">
+            <h6 class="mb-4">Project Deployments by Service</h6>
+            <div class="chart-container-md chart-center">
+              <canvas id="categoryChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Bottom Row -->
+      <div class="row mt-4 bottom-row">
+        <!-- Panel A: Recent Activity -->
+        <div class="col-lg-6">
+          <div class="card p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+              <h6 class="mb-0">Recent Activity</h6>
+              <a href="#" class="text-primary small fw-medium">View All</a>
+            </div>
+            <div class="activity-feed">
+              
+              <div class="activity-item">
+                <div class="activity-icon bg-accent-light"><i class="fas fa-check text-accent"></i></div>
+                <div class="flex-grow-1">
+                  <div><strong>Contract #ST-4821 SLA met</strong> for Ministry of Finance</div>
+                  <div class="small text-muted mt-1">2 min ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon bg-primary-light"><i class="fas fa-user-plus text-primary"></i></div>
+                <div class="flex-grow-1">
+                  <div><strong>New client</strong> Defence Research Wing onboarded</div>
+                  <div class="small text-muted mt-1">15 min ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon bg-warning-light"><i class="fas fa-dollar-sign text-warning"></i></div>
+                <div class="flex-grow-1">
+                  <div><strong>Payment of ₹1.24 Cr</strong> received for Contract #ST-4819</div>
+                  <div class="small text-muted mt-1">32 min ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon bg-danger-light"><i class="fas fa-exclamation text-danger"></i></div>
+                <div class="flex-grow-1">
+                  <div><strong>Alert: High load</strong> detected on E-Governance Portal</div>
+                  <div class="small text-muted mt-1">1 hr ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon bg-purple-light"><i class="fas fa-box text-purple-icon"></i></div>
+                <div class="flex-grow-1">
+                  <div><strong>Maintenance scheduled</strong> for SAP Business One HANA nodes</div>
+                  <div class="small text-muted mt-1">2 hrs ago</div>
+                </div>
+              </div>
+
+              <div class="activity-item">
+                <div class="activity-icon bg-accent-light"><i class="fas fa-truck text-accent"></i></div>
+                <div class="flex-grow-1">
+                  <div><strong>DevSecOps Team Handover</strong> for National Health Authority</div>
+                  <div class="small text-muted mt-1">3 hrs ago</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel B: Top Products -->
+        <div class="col-lg-6 mt-4 mt-lg-0">
+          <div class="card p-4 h-100">
+            <h6 class="mb-4">Top Products</h6>
+            <div class="table-responsive">
+              <table class="table table-borderless align-middle w-100">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Sales</th>
+                    <th>Revenue</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="fw-medium">OnePlus 12</td>
+                    <td><span class="text-muted">Electronics</span></td>
+                    <td>284</td>
+                    <td class="fw-medium">₹98,400</td>
+                    <td><span class="badge-status badge-success"><i class="fas fa-circle status-dot"></i> In Stock</span></td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">SAP S/4 HANA Migration</td>
+                    <td><span class="text-muted">ERP Solutions</span></td>
+                    <td>98.5%</td>
+                    <td class="fw-medium">₹8.2 Cr</td>
+                    <td><span class="badge-status badge-warning"><i class="fas fa-circle status-dot"></i> Delayed</span></td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">AWS Hybrid Cloud Setup</td>
+                    <td><span class="text-muted">Cloud Ops</span></td>
+                    <td>99.9%</td>
+                    <td class="fw-medium">₹5.1 Cr</td>
+                    <td><span class="badge-status badge-success"><i class="fas fa-circle status-dot"></i> Active</span></td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">SOC-as-a-Service</td>
+                    <td><span class="text-muted">Managed Security</span></td>
+                    <td>99.5%</td>
+                    <td class="fw-medium">₹4.3 Cr</td>
+                    <td><span class="badge-status badge-success"><i class="fas fa-circle status-dot"></i> Active</span></td>
+                  </tr>
+                  <tr>
+                    <td class="fw-medium">AI-powered Assessment Tool</td>
+                    <td><span class="text-muted">Digital Trans.</span></td>
+                    <td>97.8%</td>
+                    <td class="fw-medium">₹2.8 Cr</td>
+                    <td><span class="badge-status badge-success"><i class="fas fa-circle status-dot"></i> In Stock</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      &copy; 2024 ShopSphere Admin. All rights reserved.
+    </footer>
+  </div>
+
+  <div id="toastContainer" class="position-fixed bottom-0 end-0 p-3 toast-wrapper"></div>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  
+  <!-- Shared JS (always last, except page-specific) wait prompt says: page-specific JS AFTER main.js -->
+  <script src="js/main.js"></script>
+  <script src="js/dashboard.js"></script>
+
+</body>
+</html>

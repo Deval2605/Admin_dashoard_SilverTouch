@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Silver Touch</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="css/dark-mode.css" rel="stylesheet">
+</head>
+<body class="auth-page">
+
+  <div class="row g-0 h-100">
+    
+    <!-- Left Decorative Panel -->
+    <div class="col-lg-5 d-none d-lg-block login-left-panel">
+      <div class="d-flex flex-column h-100">
+        
+        <div class="d-flex align-items-center gap-2 mb-auto">
+          <i class="fas fa-server fs-2"></i>
+          <span class="fs-3 fw-bold">Silver Touch</span>
+        </div>
+
+        <div class="my-auto">
+          <h1 class="display-5 fw-bold mb-4">Enterprise IT & E-Governance Operations.</h1>
+          <p class="fs-5 text-white-50 mb-5">Centralized command center for Silver Touch Technologies Ltd digital transformation delivery.</p>
+
+          <div class="decorative-card delay-1">
+            <div class="d-flex align-items-center gap-3">
+              <div class="icon-circle bg-white text-primary">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div>
+                <h5 class="mb-0 fw-bold">₹90.22 Cr Quarterly Sales</h5>
+                <small class="text-white-50">Reported March 2026</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="decorative-card delay-3">
+            <div class="d-flex align-items-center gap-3">
+              <div class="icon-circle bg-white text-primary">
+                <i class="fas fa-users"></i>
+              </div>
+              <div>
+                <h5 class="mb-0 fw-bold">320+ IT Professionals</h5>
+                <small class="text-white-50">Deployed globally for ICT solutions</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="decorative-card delay-5">
+            <div class="d-flex align-items-center gap-3">
+              <div class="icon-circle bg-white text-primary">
+                <i class="fas fa-star"></i>
+              </div>
+              <div>
+                <h5 class="mb-0 fw-bold">CMMi Level 5 Certified</h5>
+                <small class="text-white-50">Maturity in software & process management</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-auto small text-white-50">
+          &copy; 2026 Silver Touch Technologies Ltd. All rights reserved.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Login Panel -->
+    <div class="col-12 col-lg-7 login-right-panel position-relative">
+      
+      <!-- Top Right Corner Controls -->
+      <div class="position-absolute top-0 end-0 p-4">
+        <button class="btn btn-light rounded-circle shadow-sm btn-circle-40" id="darkModeToggleAuth">
+          <i class="fas fa-moon"></i>
+        </button>
+      </div>
+
+      <div class="login-form-container">
+        <!-- Logo for mobile -->
+        <div class="d-flex align-items-center gap-2 mb-5 d-lg-none text-primary justify-content-center">
+          <i class="fas fa-server fs-2"></i>
+          <span class="fs-3 fw-bold text-dark app-title">Silver Touch</span>
+        </div>
+
+        <h2 class="fw-bold mb-2">Welcome back 👋</h2>
+        <p class="text-muted mb-4">Sign in to your Silver Touch Operations account</p>
+
+        <div id="loginAlert" class="alert alert-danger d-none py-2 px-3 small rounded-3 border-0 bg-danger-light text-danger mb-4">
+          <i class="fas fa-exclamation-circle me-1"></i> Invalid email or password. Please try again.
+        </div>
+
+        <form id="loginForm">
+          <div class="mb-3">
+            <label class="form-label text-muted small fw-medium">Email Address</label>
+            <div class="position-relative">
+              <input type="email" class="form-control" id="loginEmail" placeholder="admin@silvertouch.com">
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <label class="form-label text-muted small fw-medium">Password</label>
+            <div class="position-relative">
+              <input type="password" class="form-control pe-5" id="loginPassword" placeholder="••••••••">
+              <button type="button" class="btn border-0 position-absolute end-0 top-50 translate-middle-y text-muted" id="togglePass">
+                <i class="far fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-4">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="rememberMe">
+              <label class="form-check-label small text-muted" for="rememberMe">Remember me</label>
+            </div>
+            <a href="#" class="small text-muted text-decoration-none hover-primary">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-100 mb-4 btn-h48">Sign In</button>
+        </form>
+
+        <div class="divider-text mb-4 text-muted small text-uppercase fw-medium">or</div>
+
+        <button type="button" id="demoBtn" class="btn btn-outline-primary w-100 btn-h48">
+          <span class="btn-text">Continue as Demo Admin</span>
+          <span class="spinner-border spinner-border-sm d-none ms-2" role="status"></span>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="js/validation.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Dark mode toggle for auth page
+      const darkModeToggle = $('#darkModeToggleAuth');
+      const body = $('body');
+      
+      if (localStorage.getItem('shopsphere-theme') === 'dark') {
+        body.addClass('dark-mode');
+        darkModeToggle.find('i').removeClass('fa-moon').addClass('fa-sun');
+        $('.app-title').removeClass('text-dark').addClass('text-white');
+      }
+
+      darkModeToggle.on('click', function () {
+        body.toggleClass('dark-mode');
+        const isDark = body.hasClass('dark-mode');
+        localStorage.setItem('shopsphere-theme', isDark ? 'dark' : 'light');
+        $(this).find('i').toggleClass('fa-moon fa-sun');
+        if(isDark) {
+          $('.app-title').removeClass('text-dark').addClass('text-white');
+        } else {
+          $('.app-title').removeClass('text-white').addClass('text-dark');
+        }
+      });
+
+      // Show/hide password
+      $('#togglePass').on('click', function() {
+        const input = $('#loginPassword');
+        const icon = $(this).find('i');
+        if (input.attr('type') === 'password') {
+          input.attr('type', 'text');
+          icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+          input.attr('type', 'password');
+          icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+      });
+
+      // Clear errors on focus
+      $('input').on('focus', function() {
+        clearFieldError($(this).attr('id'));
+        $('#loginAlert').addClass('d-none');
+      });
+
+      // Login form submit
+      $('#loginForm').on('submit', function(e) {
+        e.preventDefault();
+        $('#loginAlert').addClass('d-none');
+        clearAllErrors('loginForm');
+        
+        let isValid = true;
+        const email = $('#loginEmail').val();
+        const pwd = $('#loginPassword').val();
+
+        if (validateRequired(email, 'Email') || validateEmail(email)) {
+          showFieldError('loginEmail', 'Please enter a valid email address.');
+          isValid = false;
+        }
+
+        if (validateRequired(pwd, 'Password') || pwd.length < 6) {
+          showFieldError('loginPassword', 'Password must be at least 6 characters.');
+          isValid = false;
+        }
+
+        if (isValid) {
+          if (email === 'admin@silvertouch.com' && pwd === 'Admin@123') {
+            window.location.href = 'index.html';
+          } else {
+            $('#loginAlert').removeClass('d-none');
+          }
+        }
+      });
+
+      // Demo login
+      $('#demoBtn').on('click', function() {
+        const btn = $(this);
+        btn.prop('disabled', true);
+        btn.find('.spinner-border').removeClass('d-none');
+        
+        setTimeout(() => {
+          window.location.href = 'index.html';
+        }, 800);
+      });
+    });
+  </script>
+</body>
+</html>
